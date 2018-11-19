@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:dev": "node_modules/.bin/sequelize db:migrate && nodemon -r dotenv/config bin/www",
+"test": "npm run checkDB && NODE_ENV=test mocha --watch 'test/**/*.js' ./"
   },
   "private": true,
   "dependencies": {
