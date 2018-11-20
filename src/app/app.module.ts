@@ -1,3 +1,5 @@
+import { StorageService } from './services/storage.service';
+import { DataService } from './services/data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,9 +16,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginComponent } from './login/login.component';
+import { DataTableComponent } from './data-table/data-table.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +33,7 @@ import { LoginComponent } from './login/login.component';
       dataEncapsulation: false
     })
   ],
-  providers: [],
+  providers: [DataService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

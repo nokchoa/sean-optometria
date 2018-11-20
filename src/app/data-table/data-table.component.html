@@ -1,0 +1,22 @@
+<div *ngIf="isDataAvailable" class="wrapper mat-elevation-z8">
+
+  <button mat-fab color="accent" class="add" (click)="onAddClick()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro" />
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" class="" matSort #table>
+    <!-- Generic Column -->
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row[col] }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" class="row" (click)="onRowClick(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 15, 20, 50, 100]"></mat-paginator>
+</div>

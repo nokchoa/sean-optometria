@@ -1,0 +1,19 @@
+<div class="container">
+
+  <form #objectForm>
+    <mat-card class="form-card">
+      <mat-card-title>
+        {{ formData.table | titlecase}}
+      </mat-card-title>
+      <mat-card-content class="column">
+        <mat-form-field *ngFor="let field of fields; let idx = index">
+<input matInput placeholder="{{ field }}" [name]="field" [(ngModel)]="formData[fields[idx]]" required>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="onUpload(objectForm)">Aceptar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>
