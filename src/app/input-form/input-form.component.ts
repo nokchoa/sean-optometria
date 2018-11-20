@@ -1,4 +1,4 @@
-import { DataService } from './../../services/data.service';
+import { DataService } from './../services/data.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -7,41 +7,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./input-form.component.scss']
 })
 export class InputFormComponent implements OnInit {
-  @Input('formData') formData: any;
-  @Output() onSubmit = new EventEmitter<any>();
+  @Input() formData: any;
+  @Input() method: string;
+  @Output() put = new EventEmitter<any>();
+  @Output() post = new EventEmitter<any>();
   fields: string[];
   tempID: number;
-  method: string;
   table: string;
 
   constructor(private ds: DataService) {
   }
-  
-  ngOnInit() { 
-    this.tempID = this.formData.id;
-    this.method = this.formData.method;
-    this.table = this.formData.table;
-    delete this.formData.method;
-    delete this.formData.table;
-    delete this.formData.id
+
+  ngOnInit() {
     this.fields = Object.keys(this.formData);
-    this.formData.id = this.tempID;
   }
 
-  onUpload(element: HTMLFormElement): void {
+  onProcess() {
     if (this.method === 'put') {
-      this.ds.putData(this.table, this.formData).subscribe(res => {
-        this.onSubmit.emit(res);
-        console.log("DATA PUT");
-        
-        
-      });
+      this.put.emit(this.formData);
+    } else if (this.method === 'post') {
+      this.post.emit(this.formData);
     }
-    if (this.method === 'post') {
-      this.ds.postData(this.table, this.formData).subscribe(res => {
-        this.onSubmit.emit(res)
-        console.log("DATA POST");
-      });
-    }
+    console.log('FORM ACTION' + this.method , this.formData);
   }
 }

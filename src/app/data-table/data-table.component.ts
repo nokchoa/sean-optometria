@@ -19,10 +19,16 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('sort') sort: MatSort;
   isDataAvailable = false;
 
+  @Output() addClick = new EventEmitter<any>();
+  @Output() rowClick = new EventEmitter<any>();
+
+  form = false;
+  formData: any;
+  method: string;
   table: string;
   data: any[];
   displayedColumns: string[];
@@ -41,25 +47,19 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.table = this.route.snapshot.params['table'];
-    this.storage.newStorage(this.table);
-    this.DS.getData(this.table).subscribe(data => {
-      data.map(value => {
-        this.storage.push(this.table, value);
-      });
+    console.log(this.table);
+    this.DS.getData(this.table).subscribe(array => {
+      this.data = array;
+      this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.length = this.data.length;
+      this.displayedColumns = Object.keys(this.data[0]);
+      this.isDataAvailable = true;
     });
-    this.storage.emitter[this.table].subscribe(data => {
-      this.dataSource.data.push(data);
-    });
-    this.dataSource = new MatTableDataSource(this.storage.read(this.table));
-    this.length = this.dataSource.data.length;
-    this.displayedColumns = Object.keys(this.dataSource.data[0]);
-    this.isDataAvailable = true;
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  ngAfterViewInit(): void {}
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -68,8 +68,35 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onAddClick() {}
+  onAddClick() {
+    this.formData = Object.assign({}, this.data[0]);
+    Object.keys(this.formData).map(key => {
+      this.formData[key] = '';
+    });
+    this.method = 'post';
+    this.form = !this.form;
+  }
   onRowClick(rowData: any) {
+    this.formData = rowData;
+    this.method = 'put';
+    this.form = !this.form;
+  }
 
+  onFormPut(dataObject: any) {
+    this.DS.putData(this.table, dataObject).subscribe(data => {
+      console.log(data);
+      this.data.push(dataObject);
+    });
+    this.form = !this.form;
+    console.log('Form Put', dataObject);
+  }
+  onFormPost(dataObject: any) {
+    dataObject.id = this.data.length;
+    this.DS.postData(this.table, dataObject).subscribe(data => {
+      console.log(data);
+      this.data.push(dataObject);
+    });
+    this.form = !this.form;
+    console.log('Form Post', dataObject);
   }
 }

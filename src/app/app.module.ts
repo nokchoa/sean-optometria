@@ -1,3 +1,4 @@
+import { InputFormComponent } from './input-form/input-form.component';
 import { StorageService } from './services/storage.service';
 import { DataService } from './services/data.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { DataTableComponent } from './data-table/data-table.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent],
+  declarations: [AppComponent, LoginComponent, DataTableComponent, InputFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -7,7 +7,7 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro" />
   </mat-form-field>
 
-  <mat-table [dataSource]="dataSource" class="" matSort #table>
+  <mat-table [dataSource]="dataSource" class="" matSort #sort>
     <!-- Generic Column -->
     <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </mat-header-cell>
@@ -19,4 +19,8 @@
   </mat-table>
 
   <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 15, 20, 50, 100]"></mat-paginator>
+</div>
+
+<div class="wrapper modal" *ngIf="form">
+  <app-input-form [(formData)]="formData" [(method)]="method" (put)="onFormPut($event)" (post)="onFormPost($event)"></app-input-form>
 </div>

@@ -6,10 +6,10 @@ import { DataTableComponent } from './data-table/data-table.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'tables/:table', component: DataTableComponent }
+  { path: 'tables/:table', component: DataTableComponent },
   {
     path: '',
-    redirectTo: 'tables/pacientes',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];
