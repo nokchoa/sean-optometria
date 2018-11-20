@@ -1,0 +1,30 @@
+
+.container {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 40%;
+    height: auto;
+
+    mat-card-title {
+        padding: 2rem;
+        padding-bottom: 0;
+    }
+    mat-card-content.column {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        padding-top: 1rem;
+    }
+    mat-card-actions {
+        padding: 2rem;
+        padding-top: 0;
+        display: flex;
+        justify-content: end;
+    }
+}
