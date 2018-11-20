@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  hmr: true
+  hmr: true,
+  routes: [
+    {name: 'pacientes', ref: '/api/pacientes'}
+  ]
 };
 
 /*
