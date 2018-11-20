@@ -15,4 +15,5 @@ export const environment = {
     { name: 'aseguradoras', ref: 'tables/tipos' },
     { name: 'usos', ref: 'tables/usos' },
     { name: 'veredas', ref: 'tables/veredas' }
+  ]
 };
