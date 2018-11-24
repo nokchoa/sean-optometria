@@ -11,4 +11,8 @@ module.exports = {
       .then(acompanante => res.status(201).send(acompanante))
       .catch(error => res.status(400).send(error));
   },
+  list(req, res) {
+    return acompanante
+    
+  }
 };

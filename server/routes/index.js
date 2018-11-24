@@ -9,24 +9,26 @@ const controller = require('../controllers');
 module.exports = (app) => {
   console.log(controller);
   console.log(Object.keys(controller));
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the acompanantes API!',
-  }));
 
-  app.post('/api/acompanantes', acompanantesController.create);
+  Object.keys(controller).map((obj) => {
+    app.post('/api/' + obj, controller[obj].create);
+    app.get('/api/' + obj, controller[obj].list);
+  });
 
-
-  app.post('/api/aseguradoras', aseguradorasController.create);
-
-
-  app.post('/api/citas', citasController.create);
+  // app.post('/api/acompanantes', acompanantesController.create);
 
 
-  app.post('/api/departamentos', departamentosController.create);
+  // app.post('/api/aseguradoras', aseguradorasController.create);
+
+
+  // app.post('/api/citas', citasController.create);
+
+
+  // app.post('/api/departamentos', departamentosController.create);
 
   
-  app.post('/api/examens', examensController.create);
+  // app.post('/api/examens', examensController.create);
 
 
-  app.post('/api/formulas', formulasController.create);
+  // app.post('/api/formulas', formulasController.create);
 };

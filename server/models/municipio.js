@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
 
   MUNICIPIO.associate = function (models) {
     // associations can be defined here
-    MUNICIPIO.belongsTo(model.DEPARTAMENTO, {
+    MUNICIPIO.belongsTo(models.DEPARTAMENTO, {
       foreignKey: 'cod_departamento',
       onDelete: 'CASCADE',
     });
