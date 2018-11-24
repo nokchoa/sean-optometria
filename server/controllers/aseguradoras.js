@@ -9,4 +9,10 @@ module.exports = {
       .then(aseguradora => res.status(201).send(aseguradora))
       .catch(error => res.status(400).send(error));
   },
+    list(req, res) {
+      return aseguradora
+        .all()
+        .then(todos => res.status(200).send(todos))
+        .catch(error => res.status(400).send(error));
+    }
 };
