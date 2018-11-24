@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "serve": "ng serve--open--hmr = true--progress = true--hmrWarning = false",
     "e2e": "ng e2e",
-    "start:dev": "node_modules/.bin/sequelize db:migrate && nodemon -r dotenv/config bin/www",
+    "start:dev": "nodemon -r dotenv/config bin/www",
     "server-test": "npm run checkDB && NODE_ENV=test mocha --watch 'test/**/*.js' ./"
   },
   "private": true,

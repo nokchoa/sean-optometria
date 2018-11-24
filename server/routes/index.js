@@ -4,8 +4,11 @@ const citasController = require('../controllers').citas;
 const departamentosController = require('../controllers').departamentos;
 const examensController = require('../controllers').examens;
 const formulasController = require('../controllers').formulas;
+const controller = require('../controllers');
 
 module.exports = (app) => {
+  console.log(controller);
+  console.log(Object.keys(controller));
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the acompanantes API!',
   }));
