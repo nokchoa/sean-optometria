@@ -1,5 +1,22 @@
 # SeanOptometria
 
+Para utilizar este proyecto siga los siguientes pasos:
+
+- clone el repositorio `git clone`
+- instale las dependencias `npm i`
+- Inicie el Servidor `npm run start:dev`
+- Si no tiene una base de datos previamente configurada lea el seguiente párrafo.
+
+Las configuraciones de la base de datos estan presentes en el archivo .env encontrado en la raiz del proyecto, modifiquelas de acuerdo a su base de datos, o cree una base de datos en base a esos parametros.
+
+La aplicación en si requiere de la presencia de datos en las distintas tablas uqe vayan a ser utilizadas, a continuación se describe el proceso para poner en marcha la capa de persistencia de la aplicación:
+
+- Instale sequelize-cli `npm i -g sequelize-cli`
+- Migre los modelos a la base de datos `sequelize db:migrate` (recuerde exportar las variables de entorno encontradas en el archivo .env antes de este paso).
+- Ingrese algunos datos en las tablas, puede utilizar un cliente http como RESTer (Firefox/Chrome/Chromium) haciendo solicitudes POST a los puntos de acceso del aplicativo.
+
+La aplicación en si requiere de datos en las distintas tabals creadas con
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
 ## Development server
