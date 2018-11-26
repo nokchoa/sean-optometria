@@ -1,4 +1,4 @@
-const paciente = require('../models').paciente;
+const paciente = require('../models').PACIENTE;
 
 module.exports = {
   create(req, res) {

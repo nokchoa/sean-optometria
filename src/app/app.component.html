@@ -1,21 +1,42 @@
 <mat-toolbar class="toolbar" color="primary">
   <mat-toolbar-row>
-    <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <!-- <button mat-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button> -->
     <div class="spacer"></div>
     <span>{{ title }}</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container class="example-container">
+<!-- <mat-sidenav-container class="example-container">
 
   <mat-sidenav #sidenav mode="side">
+    <mat-nav-list *ngIf="login">
+      <a mat-list-item [routerLink]="link.ref" *ngFor="let link of links"> {{ link.name }} </a>
+    </mat-nav-list>
+    <p *ngIf="!login">Loguea para acceder a los contenidos de la aplicacion.</p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-login *ngIf="!login" (login)="onLogin($event)"></app-login>
+    <router-outlet *ngIf="login"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- <mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
     <mat-nav-list>
       <a mat-list-item [routerLink]="link.ref" *ngFor="let link of links"> {{ link.name }} </a>
     </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>    
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
+    <p *ngIf="!login">Loguea para acceder a los contenidos de la aplicacion.</p>
+  </mat-drawer>
+  <mat-drawer-content>
+  </mat-drawer-content>
+</mat-drawer-container> -->
+<mat-card *ngIf="login">
+  <mat-nav-list>
+    <a mat-list-item [routerLink]="link.ref" *ngFor="let link of links"> {{ link.name }} </a>
+  </mat-nav-list>
+</mat-card>
+<app-login *ngIf="!login" (login)="onLogin($event)"></app-login>
+<router-outlet *ngIf="login"></router-outlet>

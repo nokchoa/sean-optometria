@@ -1,4 +1,4 @@
-const material = require('../models').material;
+const material = require('../models').MATERIAL;
 
 module.exports = {
   create(req, res) {

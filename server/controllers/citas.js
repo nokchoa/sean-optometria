@@ -1,4 +1,4 @@
-const cita = require('../models').cita;
+const cita = require('../models').CITA;
 
 module.exports = {
   create(req, res) {

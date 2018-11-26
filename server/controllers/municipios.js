@@ -1,4 +1,4 @@
-const municipio = require('../models').municipio;
+const municipio = require('../models').MUNICIPIO;
 
 module.exports = {
   create(req, res) {

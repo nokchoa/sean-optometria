@@ -20,7 +20,12 @@ import { LoginComponent } from './login/login.component';
 import { DataTableComponent } from './data-table/data-table.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DataTableComponent, InputFormComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    DataTableComponent,
+    InputFormComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,10 +34,11 @@ import { DataTableComponent } from './data-table/data-table.component';
     MaterialModule,
     FormsModule,
     environment.production
-    ? []
-    : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    })
+      ? []
+      : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+          dataEncapsulation: false,
+          passThruUnknownUrl: true
+        })
   ],
   providers: [DataService, StorageService],
   bootstrap: [AppComponent]

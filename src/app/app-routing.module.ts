@@ -5,13 +5,13 @@ import { LoginComponent } from './login/login.component';
 import { DataTableComponent } from './data-table/data-table.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent },
   { path: 'tables/:table', component: DataTableComponent },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: '',
+  //   redirectTo: 'login',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

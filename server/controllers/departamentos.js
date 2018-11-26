@@ -1,4 +1,4 @@
-const departamento = require('../models').departamento;
+const departamento = require('../models').DEPARTAMENTO;
 
 module.exports = {
   create(req, res) {

@@ -1,4 +1,4 @@
-const tipo = require('../models').tipo;
+const tipo = require('../models').TIPO;
 
 module.exports = {
   create(req, res) {

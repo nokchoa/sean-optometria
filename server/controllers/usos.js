@@ -1,4 +1,4 @@
-const uso = require('../models').uso;
+const uso = require('../models').USO;
 
 module.exports = {
   create(req, res) {

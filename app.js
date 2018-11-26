@@ -1,10 +1,8 @@
-const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-
+const passport = require('passport');
 const routes = require('./server/routes/index');
-
 const app = express();
 
 // Log requests to the console.
@@ -18,11 +16,10 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-routes(app);
+require('./server/config/passport')(passport);
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/dist/index.html'));
-// });
-app.use(express.static('dist'));
+routes(app, passport);
+
+app.use(express.static('dist/sean-optometria'));
 
 module.exports = app;

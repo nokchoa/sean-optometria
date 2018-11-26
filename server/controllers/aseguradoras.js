@@ -1,4 +1,4 @@
-const aseguradora = require('../models').aseguradora;
+const aseguradora = require('../models').ASEGURADORA;
 
 module.exports = {
   create(req, res) {

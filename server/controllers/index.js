@@ -10,6 +10,7 @@ const pacientes = require('./pacientes');
 const tipos = require('./tipos');
 const usos = require('./usos');
 const veredas = require('./veredas');
+const users = require('./users');
 
 module.exports = {
   acompanantes,
@@ -23,5 +24,6 @@ module.exports = {
   pacientes,
   tipos,
   usos,
-  veredas
+  veredas,
+  users
 };

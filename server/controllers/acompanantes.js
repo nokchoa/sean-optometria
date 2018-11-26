@@ -1,4 +1,4 @@
-const acompanante = require('../models').acompanante;
+const acompanante = require('../models').ACOMPANANTE;
 
 module.exports = {
   create(req, res) {

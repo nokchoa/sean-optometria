@@ -1,4 +1,4 @@
-const examen = require('../models').examen;
+const examen = require('../models').EXAMEN;
 
 module.exports = {
   create(req, res) {

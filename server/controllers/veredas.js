@@ -1,4 +1,4 @@
-const vereda = require('../models').vereda;
+const vereda = require('../models').VEREDA;
 
 module.exports = {
   create(req, res) {

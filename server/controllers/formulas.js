@@ -1,4 +1,4 @@
-const formula = require('../models').formula;
+const formula = require('../models').FORMULA;
 
 module.exports = {
   create(req, res) {
